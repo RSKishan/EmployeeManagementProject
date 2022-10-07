@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sign Up | By Code Info</title>
+  <link rel="stylesheet" href="Z:\SEM-3\Project\sign.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+      $(".button").click(function () {
+          var password = $("#txtPassword").val();
+          var confirmPassword = $("#txtConfirmPassword").val();
+          if (password != confirmPassword) {
+              alert("Passwords do not match.");
+              return false;
+          }
+          return true;
+      });
+  });
+  //  +function($) {
+  $('.palceholder').click(function() {
+    $(this).siblings('input').focus();
+  });
+
+  $('.form-control').focus(function() {
+    $(this).parent().addClass("focused");
+  });
+
+  $('.form-control').blur(function() {
+    var $this = $(this);
+    if ($this.val().length == 0)
+      $(this).parent().removeClass("focused");
+  });
+  $('.form-control').blur();
+
+  // validetion
+  $.validator.setDefaults({
+    errorElement: 'span',
+    errorClass: 'validate-tooltip'
+  });
+
+  
+  $("#formvalidate").validate({
+    rules: {
+      userName: {
+        required: true,
+        minlength: 6
+      },
+      Password: {
+        required: true,
+        minlength: 8
+      }
+    },
+    messages: {
+      userName: {
+        required: "Please enter your username.",
+        minlength: "Please provide valid username."
+      },
+      txtPassword: {
+        required: "Enter your password to Login.",
+        minlength: "Incorrect login or password."
+      }
+    }
+  });
+</script>
+
+</head>
+
+<body>
+  <p class="home">
+    Go to Home Page <a href="p1.html">click Here</a>
+  </p>
+  <div class="signup-box">
+    <h1>Sign Up</h1>
+    <h4>It's free and only takes a minute</h4>
+    <form  action="" id="formvalidate">
+      <label class="palceholder" for="userName"> User Name</label>
+      <input class="form-control" name="userName" type="text" id="userName" placeholder="" required />
+      <span class="lighting"></span>
+      <label>Email</label>
+      <input type="email" placeholder="" required />
+      <label class="palceholder" for="txtPassword">Password</label>
+      <input class="form-control" name="Password" type="Password" id="txtPassword" required/>
+      <span class="lighting"></span>
+      <label>Confirm Password</label>
+      <input type="password" id="txtConfirmPassword" required/>
+      <input type="submit"  class="button" value="Submit" />
+    </form>
+  </div>
+
+</body>
+
+</html>
